@@ -32,8 +32,9 @@ def greeting(username):
 # Example: return 404
 @app.route("/404")
 def not_found():
-    # abort(404)
-    return "Oops! Not Found.", 404
+    abort(404)
+    # or use return with message:
+    # return "Oops! Not Found.", 404
 
 
 # Example: return json list
@@ -50,3 +51,9 @@ def get_list():
         },
     ]
     return jsonify(data)
+
+# Example: get json into dict from request
+@app.route("/api/data", methods=["POST"])
+def create_data():
+    app.logger.info(request.json)
+    return "ok", 201
