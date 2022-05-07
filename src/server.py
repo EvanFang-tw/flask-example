@@ -1,6 +1,12 @@
+from crypt import methods
 from flask import Flask, jsonify, redirect, render_template, abort, request, url_for
+from db import db
+from Product import Product
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
+app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://admin:adminpw@db:5432/mydb"
+db.init_app(app)
 
 # Example: return string
 @app.route("/")
@@ -58,3 +64,22 @@ def get_list():
 def create_data():
     app.logger.info(request.json)
     return "ok", 201
+
+
+# Examples: interact with database
+@app.route("/api/products")
+def get_all_products():
+    products = [p.json for p in Product.get_all()]
+    return jsonify(products)
+    # Example of using raw sql:
+    # query_data = db.engine.execute("select * from products;")
+    # products = [{"id": id, "name": name} for id, name in query_data]
+    # return products
+
+
+@app.route("/api/product", methods=["POST"])
+def add_product():
+    name = request.json["name"]
+    product = Product(None, name)
+    product.save()
+    return jsonify(product.json), 201
