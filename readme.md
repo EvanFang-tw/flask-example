@@ -39,3 +39,15 @@ docker build -t flask-example:1.0 .
 # run
 docker run -d -p 8888:8888 --name flask-app flask-example:1.0
 ```
+
+### Dcoker Compose
+```sh
+# build
+docker-compose build
+
+# run
+docker-compose up -d
+
+# tear down
+docker-compose down
+```

@@ -11,7 +11,7 @@ def index():
 # Example: use template
 @app.route("/hello")
 def hello():
-    return render_template( "hello.html", message="world")
+    return render_template("hello.html", message="world")
 
 
 # Example: post form and redirect
@@ -51,6 +51,7 @@ def get_list():
         },
     ]
     return jsonify(data)
+
 
 # Example: get json into dict from request
 @app.route("/api/data", methods=["POST"])

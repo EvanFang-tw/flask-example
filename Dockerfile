@@ -1,6 +1,6 @@
 FROM python:3.9.12
 
-WORKDIR /code
+WORKDIR /app
 
 COPY requirements.prod.txt .
 
