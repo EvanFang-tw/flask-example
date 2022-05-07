@@ -2,9 +2,9 @@ FROM python:3.9.12
 
 WORKDIR /app
 
-COPY requirements.prod.txt .
+COPY requirements.txt .
 
-RUN pip install -r requirements.prod.txt
+RUN pip install -r requirements.txt
 
 COPY src/ .
 
