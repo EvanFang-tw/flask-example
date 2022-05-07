@@ -21,17 +21,7 @@ flask run
 black .
 ```
 
-## Deployment
-
-### Gunicorn
-```sh
-gunicorn server:app
-
-# run in background
-gunicorn -D server:app
-```
-
-### Docker
+## Docker
 ```sh
 # build
 docker build -t flask-example:1.0 .
@@ -48,6 +38,19 @@ docker-compose build
 # run
 docker-compose up -d
 
+# logs
+docker-compose logs -f
+
 # tear down
 docker-compose down
+```
+
+## Deployment
+
+### Gunicorn
+```sh
+gunicorn server:app
+
+# run in background
+gunicorn -D server:app
 ```
