@@ -13,7 +13,7 @@ pip install -r requirements.txt
 ```sh
 export FLASK_APP=src/server.py
 export FLASK_ENV=development
-flask run
+flask run -h 127.0.0.1 -p 8888
 ```
 
 ### Formatter

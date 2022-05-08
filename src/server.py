@@ -1,7 +1,7 @@
-from crypt import methods
 from flask import Flask, jsonify, redirect, render_template, abort, request, url_for
 from db import db
 from Product import Product
+from logger import logger
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
@@ -57,6 +57,18 @@ def get_list():
         },
     ]
     return jsonify(data)
+
+
+# Example: logging
+@app.route("/log")
+def log():
+    logger.debug("debug message")
+    logger.info("info message")
+    logger.warning("warning message")
+    logger.error("error message")
+    logger.critical("critical message")
+    logger.exception("exception message")
+    return "ok"
 
 
 # Example: get json into dict from request
