@@ -1,11 +1,13 @@
 from flask import Flask, jsonify, redirect, render_template, abort, request, url_for
-from db import db
+from db import db, get_db_url
 from Product import Product
-from logger import logger
+
+from logger import getLogger
+logger = getLogger(__name__)
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
-app.config["SQLALCHEMY_DATABASE_URI"] = "postgresql://admin:adminpw@db:5432/mydb"
+app.config["SQLALCHEMY_DATABASE_URI"] = get_db_url()
 db.init_app(app)
 
 # Example: return string

@@ -4,13 +4,13 @@ import pathlib
 import logging
 import logging.config
 
-_config_file_name = "logging.ini"
+from utils import get_file_dir
 
-_config_file_path = os.path.join(
-    pathlib.Path(__file__).parent.resolve(), _config_file_name
-)
+_config_file_path = os.path.join(get_file_dir(__file__), "logging.ini")
 
 # load config
 logging.config.fileConfig(_config_file_path, disable_existing_loggers=False)
 
-logger = logging.getLogger(__name__)
+
+def getLogger(name):
+    return logging.getLogger(name)
