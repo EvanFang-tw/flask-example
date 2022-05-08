@@ -23,21 +23,18 @@ flask run -h 127.0.0.1 -p 8888
 black .
 ```
 
-## Docker
-```sh
-# build
-docker build -t flask-example:1.0 .
+## Development with Docker Compose
 
-# run
-docker run -d -p 8888:8888 --name flask-app flask-example:1.0
-```
+Using docker compose to start all related services.
 
-### Dcoker Compose
 ```sh
 # build
 docker-compose build
 
 # run
+docker-compose up
+
+# or run in detached mode
 docker-compose up -d
 
 # logs

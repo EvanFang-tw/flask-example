@@ -6,8 +6,11 @@ services:
   app:
     build:
       context: .
+    environment:
+      - FLASK_ENV=development
     volumes:
       - "./configs:/app/configs"
+      - "./src:/app"
     networks:
       - frontend
       - backend
