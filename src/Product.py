@@ -18,10 +18,7 @@ class Product(db.Model):
     def save(self):
         db.session.add(self)
         db.session.commit()
-    
+
     @property
     def json(self):
-        return {
-            "id": self.id,
-            "name": self.name
-        }
+        return {"id": self.id, "name": self.name}

@@ -1,0 +1,38 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Local",
+            "type": "python",
+            "request": "launch",
+            "module": "flask",
+            "env": {
+                "FLASK_APP": "src/server.py",
+                "FLASK_ENV": "development"
+            },
+            "args": [
+                "run",
+                "-p 8888",
+                "--no-debugger"
+            ],
+            "jinja": true,
+            "justMyCode": true
+        },
+        {
+            "name": "Remote Attach(Container)",
+            "type": "python",
+            "request": "attach",
+            "connect": {
+                "host": "localhost",
+                "port": 5678
+            },
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}/src",
+                    "remoteRoot": "/app"
+                }
+            ],
+            "justMyCode": true
+        }
+    ]
+}

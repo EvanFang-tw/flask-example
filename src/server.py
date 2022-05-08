@@ -1,9 +1,17 @@
 from flask import Flask, jsonify, redirect, render_template, abort, request, url_for
 from db import db, get_db_url
 from Product import Product
-
 from logger import getLogger
+import debugpy
+import os
+
 logger = getLogger(__name__)
+
+# setup debugger
+debug = os.getenv("DEBUG", "False")
+if debug == "True":
+    debugpy.listen(("0.0.0.0", 5678))
+    logger.info("Start debugger on port 5678")
 
 app = Flask(__name__)
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False

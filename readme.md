@@ -44,6 +44,29 @@ docker-compose logs -f
 docker-compose down
 ```
 
+## Debug
+
+### Debug with VSCode
+
+Select `Local` configuration to debug flask app locally.
+
+If you want to debug flask app running in the container, you need select `Remote Attach(Container)` configuration and modify the `docker-compose.yml`:
+```yaml
+environment:
+      - FLASK_ENV=development
+    #   - DEBUG=True
+    # ports:
+    #   - "5678:5678"
+```
+change to:
+```yaml
+environment:
+    #   - FLASK_ENV=development
+      - DEBUG=True
+    ports:
+      - "5678:5678"
+```
+
 ## Deployment
 
 ### Gunicorn
