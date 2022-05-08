@@ -1,4 +1,6 @@
-# S3 Agent
+# Flask Example
+
+A quick start template with some examples.
 
 ## Development
 
