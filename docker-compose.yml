@@ -1,14 +1,23 @@
+networks:
+  frontend:
+  backend:
+
 services:
   app:
     build:
       context: .
     volumes:
       - "./configs:/app/configs"
+    networks:
+      - frontend
+      - backend
   
   web:
     build: nginx
     ports:
       - "8888:80"
+    networks:
+      - frontend
 
   db:
     image: postgres:14.2
@@ -21,6 +30,8 @@ services:
     volumes:
       - "./db/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql"
       - "db-volume:/var/lib/postgresql/data"
+    networks:
+      - backend
 
 volumes:
   db-volume:
