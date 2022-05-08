@@ -10,7 +10,6 @@ services:
     ports:
       - "8888:80"
 
-  # psql -U admin -d products
   db:
     image: postgres:14.2
     environment:
