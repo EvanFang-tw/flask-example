@@ -2,6 +2,7 @@ networks:
   frontend:
   backend:
 
+
 services:
   app:
     build:
@@ -17,7 +18,7 @@ services:
     networks:
       - frontend
       - backend
-  
+
   web:
     build: nginx
     ports:
@@ -36,6 +37,13 @@ services:
     volumes:
       - "./db/scripts/init.sql:/docker-entrypoint-initdb.d/init.sql"
       - "db-volume:/var/lib/postgresql/data"
+    networks:
+      - backend
+  
+  conjob:
+    build:
+      context: .
+      dockerfile: ./cronjobs/Dockerfile
     networks:
       - backend
 

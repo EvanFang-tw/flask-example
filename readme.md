@@ -76,3 +76,13 @@ gunicorn server:app
 # run in background
 gunicorn -D server:app
 ```
+
+### Cronjobs
+
+Using crontab to schedule jobs.
+
+Cronjob image is described in `cronjobs/Dockerfile`.
+
+Cronjob setting is described in `cronjobs/cron`.
+
+An example job is located in `cronjobs/job.py`.
