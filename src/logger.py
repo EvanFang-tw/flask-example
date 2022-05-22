@@ -1,6 +1,4 @@
 import os
-import pathlib
-
 import logging
 import logging.config
 
@@ -9,4 +7,6 @@ logging.config.fileConfig("configs/logging.ini", disable_existing_loggers=False)
 
 
 def getLogger(name):
-    return logging.getLogger(name)
+    logger = logging.getLogger(name)
+    logger.setLevel(getattr(logging, os.getenv("LOG_LEVEL", "INFO")))
+    return logger

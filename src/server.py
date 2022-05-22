@@ -21,6 +21,11 @@ db.init_app(app)
 # Example: return string
 @app.route("/")
 def index():
+    logger.debug("debug message")
+    logger.info("info message")
+    logger.warning("warning message")
+    logger.error("error message")
+    logger.critical("critical message")
     return "<h1>Flask is cool</h1>"
 
 

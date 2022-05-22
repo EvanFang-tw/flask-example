@@ -23,6 +23,11 @@ flask run -h 127.0.0.1 -p 8888
 black .
 ```
 
+### Type Check
+```sh
+mypy .
+```
+
 ## Development with Docker Compose
 
 Using docker compose to start all related services.
